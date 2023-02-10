@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: auto;
+}
+
+.title {
+  width: 70%;
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.article {
+  width: 70%;
+  height: 100px;
+  display: block;
+  position: relative;
+  padding: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+
+.author {
+  padding: 10px;
+}
+
+.btn {
+  padding: 10px;
+}
+
+.addedTitle,
+.addedArticle,
+.addedAuthor {
+  width: 70%;
+  min-height: 50px;
+  padding: 10px;
+  border: 1px solid;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+span,
+.edit,
+.action {
+  margin: 0;
+  max-width: 70%;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  border: 1px solid;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.edit {
+  margin-right: 15px;
+  background-color: orange;
+}
+
+.delete {
+  background-color: red;
+}
