@@ -7,21 +7,25 @@ let tasks = document.querySelector(".tasks");
 btn.onclick = function () {
   if (title.value && article.value && author.value !== "") {
     let titleDiv = document.createElement("div");
-    titleDiv.classList = "addedTitle";
-    titleDiv.innerHTML = title.value;
+    let task = document.createElement("p");
+    task.classList = "content";
+    let titleValue = title.value;
+    titleDiv.classList = "task";
     title.value = "";
 
-    let articleDiv = document.createElement("div");
+    let articleDiv = document.createElement("p");
     articleDiv.classList = "addedArticle";
     articleDiv.innerHTML = article.value;
     article.value = "";
 
-    let authorDiv = document.createElement("div");
+    let authorDiv = document.createElement("p");
+    let date = document.createElement("span");
     authorDiv.classList = "addedAuthor";
     authorDiv.innerHTML = author.value;
+    date.innerHTML = new Date().toDateString();
     author.value = "";
 
-    let links = document.createElement("span");
+    let links = document.createElement("div");
     let edit = document.createElement("a");
     let del = document.createElement("a");
 
@@ -32,9 +36,10 @@ btn.onclick = function () {
     del.classList = "delete";
     del.innerHTML = "Delete";
 
-    tasks.append(titleDiv, articleDiv, authorDiv);
-    titleDiv.append(links);
+    task.append(titleValue);
     links.append(edit, del);
+    titleDiv.append(task, links, articleDiv, authorDiv, date);
+    tasks.append(titleDiv);
   } else {
     alert("Please Fill All Fields");
   }
@@ -43,7 +48,16 @@ btn.onclick = function () {
 tasks.addEventListener("click", (e) => {
   target = e.target;
   if (target.classList.contains("delete")) {
-    target.parentElement.parentElement.remove();
+    document.querySelector(".task").remove();
   }
-  console.log(target);
+});
+
+tasks.addEventListener("click", (e) => {
+  target = e.target;
+  if (target.classList.contains("edit")) {
+    tasks = target.parentElement.parentElement;
+    title.value = tasks.children[0].textContent;
+    article.value = tasks.children[2].textContent;
+    author.value = tasks.children[3].textContent;
+  }
 });
