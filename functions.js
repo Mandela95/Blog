@@ -1,36 +1,64 @@
-function renderArticle(title, article, author) {
-  let titleDiv = document.createElement("div");
-  let task = document.createElement("p");
-  task.classList = "content";
-  let titleValue = title.value;
-  titleDiv.classList = "task";
-  title.value = "";
+let allArticles;
+if (localStorage.article != null) {
+  allArticles = JSON.parse(localStorage.article);
+} else {
+  allArticles = [];
+}
 
-  let articleDiv = document.createElement("p");
-  articleDiv.classList = "addedArticle";
-  articleDiv.innerHTML = article.value;
-  article.value = "";
+function showData() {
+  let task = "";
+  let date = new Date().toDateString();
 
-  let authorDiv = document.createElement("p");
-  let date = document.createElement("span");
-  authorDiv.classList = "addedAuthor";
-  authorDiv.innerHTML = author.value;
-  date.innerHTML = new Date().toDateString();
-  author.value = "";
+  for (let i = 0; i < allArticles.length; i++) {
+    task += `
+        <div class="task ${i + 1}">
+          <div class="action">
+            <p>${allArticles[i].title}</p>
+            <span class="addedBtn">
+              <button onclick="updateData(${i})" id="update">Update</button>
+              <button onclick="deleteData(${i})" id="delete">Delete</button>
+            </span>
+          </div>
+          <p>${allArticles[i].article}</p>
+          <div class="date">
+            <p>${allArticles[i].author}</p>
+            <span>${date}</span>
+          </div>
+        </div>`;
+  }
+  document.getElementById("tasks").innerHTML = task;
+}
+showData();
 
-  let links = document.createElement("div");
-  let edit = document.createElement("a");
-  let del = document.createElement("a");
+// clear data
+function clearData() {
+  inputTitle.value = "";
+  articleContent.value = "";
+  authorName.value = "";
+  titleRequired.style.display = "none";
+  textareaRequired.style.display = "none";
+  authorRequired.style.display = "none";
+}
 
-  links.classList = "action";
-  edit.classList = "edit";
-  edit.innerHTML = "Edit";
+// delete data
+function deleteData(i) {
+  allArticles.splice(i, 1);
+  localStorage.article = JSON.stringify(allArticles);
+  showData();
+}
 
-  del.classList = "delete";
-  del.innerHTML = "Delete";
+// update Data
+function updateData(i) {
+  clearData();
+  inputTitle.value = allArticles[i].title;
+  articleContent.value = allArticles[i].article;
+  authorName.value = allArticles[i].author;
+  $publishBtn.innerHTML = "Update";
+  mood = "update";
+  assistantVar = i;
 
-  task.append(titleValue);
-  links.append(edit, del);
-  titleDiv.append(task, links, articleDiv, authorDiv, date);
-  tasks.append(titleDiv);
+  scroll({
+    top: 0,
+    behavior: "smooth",
+  });
 }
