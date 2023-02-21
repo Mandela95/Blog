@@ -1,6 +1,6 @@
-let inputTitle = document.querySelector(".title");
-let articleContent = document.querySelector(".article");
-let authorName = document.querySelector(".author");
+let inputTitle = document.getElementById("title");
+let articleContent = document.getElementById("article");
+let authorName = document.getElementById("author");
 let $publishBtn = document.querySelector(".publishBtn");
 let tasks = document.querySelector(".tasks");
 
@@ -31,33 +31,18 @@ $publishBtn.onclick = function () {
       } else {
         titleRequired.style.display = "block";
         titleRequired.innerHTML = "Title Is Required";
-
-        setTimeout(
-          () => document.querySelector("#titleRequired").remove(),
-          1000
-        );
       }
       if (articleContent.value != "") {
         textareaRequired.style.display = "none";
       } else {
         textareaRequired.style.display = "block";
         textareaRequired.innerHTML = "Article Content Is Required";
-
-        setTimeout(
-          () => document.querySelector("#textareaRequired").remove(),
-          2000
-        );
       }
       if (authorName.value != "") {
         authorRequired.style.display = "none";
       } else {
         authorRequired.style.display = "block";
         authorRequired.innerHTML = "Author Name Is Required";
-
-        setTimeout(
-          () => document.querySelector("#authorRequired").remove(),
-          3000
-        );
       }
     }
   } else {
