@@ -2,54 +2,67 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
 }
 
 .title {
-  width: 70%;
-  display: block;
+  width: 100%;
   margin: 10px auto;
   padding: 10px;
 }
 
 .article {
-  width: 70%;
-  height: 100px;
-  display: block;
-  position: relative;
+  width: 100%;
+  min-height: 100px;
   padding: 10px;
-  margin: auto;
+  margin: 10px 0;
 }
 
-.container {
-  width: 70%;
+.authorPublish {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin: 10px auto;
+  align-items: center;
+  margin: 10px 0;
 }
 
 .author {
-  padding: 10px 0;
+  padding: 10px;
+  width: 50%;
 }
 
-.btn {
+.publishBtn {
   padding: 10px;
+  cursor: pointer;
+}
+
+.publishBtn:hover {
+  background-color: #bebebe;
+  border: 2px solid #bebebe;
+  color: #fff;
+}
+#titleRequired,
+#textareaRequired,
+#authorRequired {
+  width: fit-content;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+  display: none;
+  background-color: #c7190d;
+  color: #fff;
 }
 
 .task {
-  width: 70%;
-  min-height: 50px;
+  position: relative;
   padding: 10px;
   border: 1px solid;
-  margin: 5px auto;
+  margin: 10px auto;
   word-break: break-all;
-  position: relative;
-}
-
-.task .content,
-.task .addedAuthor {
-  width: 70%;
-  margin: 0;
 }
 
 .addedArticle,
@@ -58,47 +71,56 @@
   margin: 20px 0;
 }
 
-.task span {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  padding: 3px;
-  border-radius: 5px;
-  background-color: #0f0;
+.task p:not(:nth-child(2)) {
+  width: 70%;
+  margin: 10px 0;
 }
 
-span .addedAuthor {
+.action {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-span,
-.edit,
-.action {
-  margin: 0;
-  max-width: 60%;
-}
-
-.edit,
-.delete {
+#update,
+#delete {
   cursor: pointer;
+  color: #fff;
   border: 1px solid;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
-.action {
-  position: absolute;
-  right: 10px;
-  top: 15px;
-}
-
-.edit {
-  margin-right: 15px;
+#update {
   background-color: orange;
 }
+#update:hover {
+  background-color: #af7200;
+}
 
-.delete {
+#delete {
   background-color: red;
+}
+
+#delete:hover {
+  background-color: #6b0000;
+}
+
+.date {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.date span {
+  background-color: #0f0;
+  color: #fff;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .addedBtn {
+    display: grid;
+  }
 }
