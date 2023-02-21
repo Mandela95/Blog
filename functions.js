@@ -45,6 +45,7 @@ function deleteData(i) {
   allArticles.splice(i, 1);
   localStorage.article = JSON.stringify(allArticles);
   mood = "publish";
+  $publishBtn.innerHTML = "Publish";
   clearData();
   showData();
 }
