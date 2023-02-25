@@ -5,22 +5,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task</title>
+  <title>Task Nedal</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="container">
     <input id="title" class="title" type="text" placeholder="Title" required>
-    <div id="titleRequired"></div>
+    <div id="titleRequired">Title Is Required</div>
     <textarea id="article" class="article" placeholder="Article" required></textarea>
-    <div id="textareaRequired"></div>
+    <div id="textareaRequired">Article Content Is Required</div>
     <div id="authorPublish" class="authorPublish">
       <input id="author" class="author" type="text" placeholder="Author" required>
-      <button class="publishBtn">Publish</button>
+      <button id="publishBtn">Publish</button>
     </div>
-    <div id="authorRequired"></div>
-    <div id="tasks" class="tasks"></div>
+    <div id="authorRequired">Author Name Is Required</div>
+    <div id="articles"></div>
   </div>
 
   <script src="functions.js"></script>
