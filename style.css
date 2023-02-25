@@ -16,7 +16,7 @@
   padding: 10px;
 }
 
-.article {
+#article {
   width: 100%;
   min-height: 100px;
   padding: 10px;
@@ -35,12 +35,12 @@
   width: 50%;
 }
 
-.publishBtn {
+#publishBtn {
   padding: 10px;
   cursor: pointer;
 }
 
-.publishBtn:hover {
+#publishBtn:hover {
   background-color: #bebebe;
   border: 2px solid #bebebe;
   color: #fff;
@@ -57,7 +57,7 @@
   color: #fff;
 }
 
-.task {
+.article {
   position: relative;
   padding: 10px;
   border: 1px solid;
