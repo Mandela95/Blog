@@ -1,22 +1,22 @@
 let allArticles;
-if (localStorage.article != null) {
-  allArticles = JSON.parse(localStorage.article);
+if (localStorage.articles != null) {
+  allArticles = JSON.parse(localStorage.articles);
 } else {
   allArticles = [];
 }
 
-function showData() {
-  let task = "";
+function renderArticles() {
   let date = new Date().toDateString();
+  let article = "";
 
   for (let i = 0; i < allArticles.length; i++) {
-    task += `
-        <div class="task ${i + 1}">
+    article += `
+        <div class="article ${i + 1}">
           <div class="action">
             <p>${allArticles[i].title}</p>
             <span class="addedBtn">
-              <button onclick="updateData(${i})" id="update">Update</button>
-              <button onclick="deleteData(${i})" id="delete">Delete</button>
+              <button onclick="updateArticle(${i})" id="update">Update</button>
+              <button onclick="deleteArticle(${i})" id="delete">Delete</button>
             </span>
           </div>
           <p>${allArticles[i].article}</p>
@@ -26,39 +26,39 @@ function showData() {
           </div>
         </div>`;
   }
-  document.getElementById("tasks").innerHTML = task;
+  document.getElementById("articles").innerHTML = article;
 }
-showData();
+renderArticles();
 
-// clear data
-function clearData() {
-  inputTitle.value = "";
-  articleContent.value = "";
-  authorName.value = "";
-  titleRequired.style.display = "none";
-  textareaRequired.style.display = "none";
-  authorRequired.style.display = "none";
+// clear article
+function clearArticles() {
+  $inputTitle.value = "";
+  $articleContent.value = "";
+  $authorName.value = "";
+  $titleRequired.style.display = "none";
+  $textareaRequired.style.display = "none";
+  $authorRequired.style.display = "none";
 }
 
-// delete data
-function deleteData(i) {
+// delete article
+function deleteArticle(i) {
   allArticles.splice(i, 1);
-  localStorage.article = JSON.stringify(allArticles);
+  localStorage.articles = JSON.stringify(allArticles);
   mood = "publish";
   $publishBtn.innerHTML = "Publish";
-  clearData();
-  showData();
+  clearArticles();
+  renderArticles();
 }
 
-// update Data
-function updateData(i) {
-  clearData();
-  inputTitle.value = allArticles[i].title;
-  articleContent.value = allArticles[i].article;
-  authorName.value = allArticles[i].author;
+// update article
+function updateArticle(i) {
+  clearArticles();
+  $inputTitle.value = allArticles[i].title;
+  $articleContent.value = allArticles[i].article;
+  $authorName.value = allArticles[i].author;
   $publishBtn.innerHTML = "Update";
   mood = "update";
-  assistantVar = i;
+  altIndex = i;
 
   scroll({
     top: 0,
