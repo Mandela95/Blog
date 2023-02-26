@@ -2,6 +2,7 @@ let $inputTitle = document.getElementById("title");
 let $articleContent = document.getElementById("article");
 let $authorName = document.getElementById("author");
 
+// put inputs into an array to iterate
 let inputs = [$inputTitle, $articleContent, $authorName];
 
 let $publishBtn = document.getElementById("publishBtn");
@@ -57,13 +58,14 @@ const publish = function () {
     clearArticles();
   }
 
-  localStorage.setItem("articles", JSON.stringify(allArticles));
+  retrieveArticles();
 
   renderArticles();
 };
 
 $publishBtn.onclick = publish;
 
+// showing required div for all inputs
 $inputTitle.addEventListener("input", function () {
   if ($inputTitle.value.trim() != "") {
     $titleRequired.style.display = "none";
@@ -88,7 +90,7 @@ $authorName.addEventListener("input", function () {
   }
 });
 
-// press enter
+// publish article when pressing enter
 inputs.map((item) => {
   item.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
