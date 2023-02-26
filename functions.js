@@ -6,12 +6,13 @@ if (localStorage.articles != null) {
 }
 
 function renderArticles() {
-  let date = new Date().toDateString();
+  var date = new Date().toLocaleString();
+
   let article = "";
 
   for (let i = 0; i < allArticles.length; i++) {
     article += `
-        <div class="article ${i + 1}">
+        <div class="article ${crypto.randomUUID()}">
           <div class="action">
             <p>${allArticles[i].title}</p>
             <span class="addedBtn">
@@ -35,9 +36,6 @@ function clearArticles() {
   $inputTitle.value = "";
   $articleContent.value = "";
   $authorName.value = "";
-  $titleRequired.style.display = "none";
-  $textareaRequired.style.display = "none";
-  $authorRequired.style.display = "none";
 }
 
 // delete article
@@ -48,6 +46,11 @@ function deleteArticle(i) {
   $publishBtn.innerHTML = "Publish";
   clearArticles();
   renderArticles();
+}
+
+// retrieve articles from local storage
+function retrieveArticles() {
+  localStorage.setItem("articles", JSON.stringify(allArticles));
 }
 
 // update article
