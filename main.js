@@ -16,18 +16,18 @@ let mood = "publish";
 let altIndex;
 
 const publish = function () {
-  if (mood === "publish") {
-    if (
-      $inputTitle.value.trim() != "" &&
-      $articleContent.value.trim() != "" &&
-      $authorName.value.trim() != ""
-    ) {
-      let newArticle = {
-        title: $inputTitle.value,
-        article: $articleContent.value,
-        author: $authorName.value,
-        date: new Date().toLocaleString(),
-      };
+  if (
+    $inputTitle.value.trim() != "" &&
+    $articleContent.value.trim() != "" &&
+    $authorName.value.trim() != ""
+  ) {
+    let newArticle = {
+      title: $inputTitle.value,
+      article: $articleContent.value,
+      author: $authorName.value,
+      date: new Date().toLocaleString(),
+    };
+    if (mood === "publish") {
       allArticles.push(newArticle);
       clearArticles();
     } else {
@@ -46,18 +46,28 @@ const publish = function () {
       } else {
         $authorRequired.style.display = "block";
       }
+      allArticles[altIndex] = newArticle;
+      mood = "publish";
+      $publishBtn.innerHTML = "Publish";
+      clearArticles();
     }
-  } else {
-    let newArticle = {
-      title: $inputTitle.value,
-      article: $articleContent.value,
-      author: $authorName.value,
-      date: new Date().toLocaleString(),
-    };
-    allArticles[altIndex] = newArticle;
-    mood = "publish";
-    $publishBtn.innerHTML = "Publish";
-    clearArticles();
+  }
+  else {
+    if ($inputTitle.value.trim() != "") {
+      $titleRequired.style.display = "none";
+    } else {
+      $titleRequired.style.display = "block";
+    }
+    if ($articleContent.value.trim() != "") {
+      $textareaRequired.style.display = "none";
+    } else {
+      $textareaRequired.style.display = "block";
+    }
+    if ($authorName.value.trim() != "") {
+      $authorRequired.style.display = "none";
+    } else {
+      $authorRequired.style.display = "block";
+    }
   }
 
   loadArticles();
