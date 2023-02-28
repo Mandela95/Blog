@@ -36,6 +36,9 @@ function clearArticles() {
   $inputTitle.value = "";
   $articleContent.value = "";
   $authorName.value = "";
+  $titleRequired.style.display = "none";
+  $textareaRequired.style.display = "none";
+  $authorRequired.style.display = "none";
 }
 
 // delete article
@@ -48,8 +51,8 @@ function deleteArticle(i) {
   renderArticles();
 }
 
-// retrieve articles from local storage
-function retrieveArticles() {
+// put articles in local storage
+function loadArticles() {
   localStorage.setItem("articles", JSON.stringify(allArticles));
 }
 
