@@ -26,6 +26,7 @@ const publish = function () {
         title: $inputTitle.value,
         article: $articleContent.value,
         author: $authorName.value,
+        date: new Date().toLocaleString(),
       };
       allArticles.push(newArticle);
       clearArticles();
@@ -51,6 +52,7 @@ const publish = function () {
       title: $inputTitle.value,
       article: $articleContent.value,
       author: $authorName.value,
+      date: new Date().toLocaleString(),
     };
     allArticles[altIndex] = newArticle;
     mood = "publish";
@@ -58,7 +60,7 @@ const publish = function () {
     clearArticles();
   }
 
-  retrieveArticles();
+  loadArticles();
 
   renderArticles();
 };
