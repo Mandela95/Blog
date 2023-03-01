@@ -6,8 +6,6 @@ if (localStorage.articles != null) {
 }
 
 function renderArticles() {
-  var date = new Date().toLocaleString();
-
   let article = "";
 
   for (let i = 0; i < allArticles.length; i++) {
@@ -23,7 +21,7 @@ function renderArticles() {
           <p>${allArticles[i].article}</p>
           <div class="date">
             <p>${allArticles[i].author}</p>
-            <span>${date}</span>
+            <span>${allArticles[i].date}</span>
           </div>
         </div>`;
   }
