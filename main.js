@@ -25,7 +25,17 @@ const publish = function () {
       title: $inputTitle.value,
       article: $articleContent.value,
       author: $authorName.value,
-      date: new Date().toLocaleString(),
+      date: new Date().toLocaleString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        weekday: "long",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      }),
+      // GB great britain displays day first
+      // while default "en-US" displays month first.
     };
     if (mood === "publish") {
       allArticles.push(newArticle);
@@ -51,8 +61,7 @@ const publish = function () {
       $publishBtn.innerHTML = "Publish";
       clearArticles();
     }
-  }
-  else {
+  } else {
     if ($inputTitle.value.trim() != "") {
       $titleRequired.style.display = "none";
     } else {
@@ -70,8 +79,8 @@ const publish = function () {
     }
   }
 
-  loadArticles();
-
+  storeArticles();
+  
   renderArticles();
 };
 
