@@ -1,9 +1,5 @@
 let allArticles;
-if (localStorage.articles != null) {
-  allArticles = JSON.parse(localStorage.articles);
-} else {
-  allArticles = [];
-}
+retrieveArticles();
 
 function renderArticles() {
   let article = "";
@@ -49,9 +45,18 @@ function deleteArticle(i) {
   renderArticles();
 }
 
-// put articles in local storage
-function loadArticles() {
+// store articles in local storage
+function storeArticles() {
   localStorage.setItem("articles", JSON.stringify(allArticles));
+}
+
+// retrieve articles from local storage
+function retrieveArticles() {
+  if (localStorage.articles != null) {
+    allArticles = JSON.parse(localStorage.articles);
+  } else {
+    allArticles = [];
+  }
 }
 
 // update article
