@@ -88,6 +88,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
 }
 
 #update,
@@ -118,6 +119,10 @@
   display: flex;
   justify-content: space-between;
   align-items: end;
+}
+
+.date p {
+  font-weight: bold;
 }
 
 .date span {
