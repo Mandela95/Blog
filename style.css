@@ -23,6 +23,10 @@
   margin: 10px 0;
 }
 
+#articles p {
+    word-break: break-word;
+}
+
 .authorPublish {
   display: flex;
   justify-content: space-between;
